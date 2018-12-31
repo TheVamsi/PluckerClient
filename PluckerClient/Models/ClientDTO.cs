@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PluckerClient.Models
 {
@@ -8,9 +9,9 @@ namespace PluckerClient.Models
         public string Name { get; set; }
         public string ZipfileName { get; set; }
         public bool AllIndustries { get; set; }
-        public IList<AllowedClientCountries> AllowedClientCountries { get; set;}
+        public IQueryable<AllowedClientCountries> AllowedClientCountries { get; set;}
         //public IList<string> AllowedClientCountries { get; set; }
-        public IList<string> AllowedClientIndustries { get; set; }
+        public IQueryable<AllowedClientIndustries> AllowedClientIndustries { get; set; }
         public bool AllCountries { get; set; }
         public bool GetsWord { get; set; }
         public bool GetsPdf { get; set; }

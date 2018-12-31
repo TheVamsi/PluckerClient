@@ -1,17 +1,21 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace PluckerClient.Models
 {
     public class AllowedClientCountries
-    {   
-          private int ClientId { get; set; }
-          private string CountryCode { get; set; }
-          private string CountryName { get; set; }
-          private string CountryShortName { get; set; }
-          private int CountryCodeId { get; set; }
+    {
+       
+          public string CountryCode { get; set; }
+          public string CountryName { get; set; }
+          public string CountryShortName { get; set; }
+          public int CountryCodeId { get; set; }
 
+
+         
     }
 }
