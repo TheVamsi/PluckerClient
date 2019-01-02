@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using PluckerClient.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PluckerClient.Controllers
 {
@@ -20,11 +19,8 @@ namespace PluckerClient.Controllers
 
         // GET: api/Clients
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Client>>> GetClient()
+        public ActionResult<IEnumerable<Client>> GetClient()
         {
-
-         
-            List<ClientDto> clients = new List<ClientDto>();
             var config = new MapperConfiguration(c =>
                 {
                     c.CreateMap<Client, ClientDto>()
@@ -45,21 +41,17 @@ namespace PluckerClient.Controllers
                 var clientsQuery =_context.Client.AsEnumerable()
                     .Select(role => mapper.Map<ClientDto>(role));
 
-                foreach (var clientData in clientsQuery)
-                {
-                    clients.Add(clientData);
-                } 
-            
+                var clients = clientsQuery.ToList();
 
 
-            return Ok(clients);
+                return Ok(clients);
 
         }
     
 
     //GET: api/Clients/5
             [HttpGet("{id}")]
-        public ActionResult<Client> GetClient(int id)
+        public ActionResult<Client> GetClient(int clientId)
         {
             var config = new MapperConfiguration(c =>
             {
@@ -79,7 +71,7 @@ namespace PluckerClient.Controllers
             });
 
             var mapper = config.CreateMapper();
-            var clientsQuery = _context.Client.AsEnumerable().Where(c => c.ClientId == id)
+            var clientsQuery = _context.Client.AsEnumerable().Where(c => c.ClientId == clientId)
                 .Select(role => mapper.Map<ClientDto>(role));
             return Ok(clientsQuery);
         }

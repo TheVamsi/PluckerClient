@@ -9,9 +9,8 @@ namespace PluckerClient.Models
         public string Name { get; set; }
         public string ZipfileName { get; set; }
         public bool AllIndustries { get; set; }
-        public IQueryable AllowedClientCountries { get; set;}
-        //public IList<string> AllowedClientCountries { get; set; }
-        public IQueryable AllowedClientIndustries { get; set; }
+        public IEnumerable<AllowedClientCountries> AllowedClientCountries { get; set;}
+        public IEnumerable<AllowedClientIndustries> AllowedClientIndustries { get; set; }
         public bool AllCountries { get; set; }
         public bool GetsWord { get; set; }
         public bool GetsPdf { get; set; }
